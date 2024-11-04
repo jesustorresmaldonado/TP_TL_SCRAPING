@@ -26,26 +26,29 @@ Para ejecutar el programa y generar el archivo Excel con los rankings combinados
 
 ```bash
 node nombre-del-archivo.js
-Una vez ejecutado, el archivo ranking_combinado.xlsxse generará en el directorio del proyecto.
+ ```
+Una vez ejecutado, el archivo `ranking_combinado.xlsx` se generará en el directorio del proyecto.
 
-##Estructura del Código
-obtenerRankingTIOBE() :
+## Estructura del Código
 
-Realice una solicitud al sitio de TIOBE para obtener el ranking de lenguajes.
-Usa jsdompara analizar el HTML y extraer la posición, lenguaje y cambio en el ranking.
-obtenerRankingTecsify() :
+1. **obtenerRankingTIOBE()**: 
+   - Realiza una solicitud al sitio de TIOBE para obtener el ranking de lenguajes.
+   - Usa `jsdom` para analizar el HTML y extraer la posición, lenguaje y cambio en el ranking.
 
-Obtiene el ranking de lenguajes de Tecsify.
-Extrae posición, lenguaje y porcentaje de uso jsdom.
-obtenerRankingPYPL() :
+2. **obtenerRankingTecsify()**: 
+   - Obtiene el ranking de lenguajes de Tecsify.
+   - Extrae posición, lenguaje y porcentaje de uso usando `jsdom`.
 
-Extrae los datos del ranking PYPL.
-Extrae información como posición, lenguaje, porcentaje de uso y tendencia.
-generarExcel() :
+3. **obtenerRankingPYPL()**: 
+   - Extrae los datos del ranking PYPL.
+   - Extrae información como posición, lenguaje, porcentaje de uso y tendencia.
 
-Crea un archivo Excel con columnas que combinan los rankings de TIOBE, Tecsify y PYPL.
-Llena cada fila con la información obtenida de cada función de extracción.
-Guarde el archivo Excel con el nombre ranking_combinado.xlsx.
+4. **generarExcel()**: 
+   - Crea un archivo Excel con columnas que combinan los rankings de TIOBE, Tecsify y PYPL.
+   - Llena cada fila con la información obtenida de cada función de extracción.
+   - Guarda el archivo Excel con el nombre `ranking_combinado.xlsx`.
 
-##Análisis y utilidad
-Este proyecto permite a desarrolladores y analistas capturar en un solo archivo Excel los datos de popularidad de los distintos lenguajes de programación, según tres fuentes relevantes. al cebtralizar esta información en un archivo estructurado, hacilita el análisis y seguimiento de la popularidad de los lenguajes en el tiempo, lo que permite ser útil para decisiones de negocio, capacitacion y estrategia tecnologica.
+## Análisis y Utilidad
+
+Este proyecto permite a desarrolladores y analistas comparar en un solo archivo Excel los datos de popularidad de distintos lenguajes de programación, según tres fuentes relevantes. Al centralizar esta información en un archivo estructurado, facilita el análisis y seguimiento de la popularidad de los lenguajes en el tiempo, lo que puede ser útil para decisiones de negocio, capacitación y estrategia tecnológica.
+
