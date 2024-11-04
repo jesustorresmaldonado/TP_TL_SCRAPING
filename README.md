@@ -41,7 +41,7 @@ Una vez ejecutado, el archivo `ranking_combinado.xlsx` se generará en el direct
 
 3. **obtenerRankingPYPL()**: 
    - Extrae los datos del ranking PYPL.
-   - Extrae información como posición, lenguaje, porcentaje de uso y tendencia.
+   - Extrae información como posición, lenguaje, porcentaje de uso y tendencia usando `jsdom` .
 
 4. **generarExcel()**: 
    - Crea un archivo Excel con columnas que combinan los rankings de TIOBE, Tecsify y PYPL.
