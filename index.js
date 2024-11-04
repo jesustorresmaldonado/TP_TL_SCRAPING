@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import { JSDOM } from 'jsdom';
 import ExcelJS from 'exceljs';
 
-// Función para obtener el ranking de TIOBE
+
 async function obtenerRankingTIOBE() {
   const respuesta = await fetch("https://www.tiobe.com/tiobe-index/");
   const datos = await respuesta.text();
@@ -22,7 +22,7 @@ async function obtenerRankingTIOBE() {
   return rankingTIOBE;
 }
 
-// Función para obtener el ranking de Tecsify
+
 async function obtenerRankingTecsify() {
   const respuesta = await fetch("https://tecsify.com/blog/top-lenguajes-2024/");
   const datos = await respuesta.text();
@@ -34,12 +34,12 @@ async function obtenerRankingTecsify() {
   for (let i = 1; i < filasRanking.length; i++) {
     const celdas = filasRanking[i].querySelectorAll("td");
     
-    // Verifica el número de celdas para evitar errores
-    if (celdas.length >= 3) { // Asegúrate de que haya al menos 3 celdas
+    
+    if (celdas.length >= 3) { 
       rankingTecsify.push({
         posicion: celdas[0].textContent.trim(),
-        lenguaje: celdas[4].textContent.trim(), // Asegúrate de que este índice es correcto
-        porcentaje: celdas[5].textContent.trim(), // Asegúrate de que este índice es correcto
+        lenguaje: celdas[4].textContent.trim(), 
+        porcentaje: celdas[5].textContent.trim(), 
       });
     }
   }
@@ -51,7 +51,7 @@ async function obtenerRankingPYPL() {
   const datos = await respuesta.text();
   const dom = new JSDOM(datos);
   
-  // Seleccionar la tabla con el ID específico
+  
   const filasRanking = dom.window.document.querySelectorAll("#table_id1 tbody tr");
 
   const rankingPYPL = [];
@@ -73,7 +73,7 @@ async function obtenerRankingPYPL() {
 
 
 
-// Función para escribir los rankings en Excel
+
 async function generarExcel() {
   const workbook = new ExcelJS.Workbook();
   const worksheet = workbook.addWorksheet("Ranking");
@@ -94,7 +94,7 @@ async function generarExcel() {
   const rankingTecsify = await obtenerRankingTecsify();
   const rankingPYPL = await obtenerRankingPYPL();
 
-   // Agregar datos del ranking TIOBE
+   
    rankingTIOBE.forEach((fila, index) => {
     const filaTecsify = rankingTecsify[index] || {};
     const filaPYPL = rankingPYPL[index] || {};
@@ -111,7 +111,7 @@ async function generarExcel() {
     });
   });
 
-  // Guardar el archivo Excel
+
   await workbook.xlsx.writeFile("ranking_combinado.xlsx");
   console.log("Datos guardados en ranking_combinado.xlsx");
 }
